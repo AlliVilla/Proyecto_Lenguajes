@@ -1,0 +1,10 @@
+2025-11-24 11:49:37 [SET] ruta = 'tests/salida.txt'
+2025-11-24 11:49:37 [WRITEFILE] tests/salida.txt
+2025-11-24 11:49:37 [APPENDFILE] tests/salida.txt
+2025-11-24 11:49:37 [READFILE] tests/salida.txt -> contenido
+2025-11-24 11:49:37 [PRINT] Contenido del archivo:
+2025-11-24 11:49:37 [PRINT] Primera lÃ­nea
+Segunda lÃ­nea
+
+2025-11-24 11:49:37 [DELETEFILE] tests/salida.txt
+2025-11-24 11:49:37 [LOG] Archivo eliminado en el test de files

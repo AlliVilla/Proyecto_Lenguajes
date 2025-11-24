@@ -1,6 +1,11 @@
 from lexer import tokenize
 
-KEYWORDS = {"set", "print", "log", "if", "else", "end"}
+KEYWORDS = {
+    "set", "print", "log",
+    "if", "else", "end",
+    "while",
+    "writefile", "appendfile", "readfile", "deletefile"
+}
 
 class ParseError(Exception):
     pass
@@ -42,22 +47,39 @@ class Parser:
 
         if t.kind == "IDENT":
             kw = t.value.lower()
-            if kw in KEYWORDS:
-                if kw == "set":
-                    return self._parse_set()
-                elif kw == "print":
-                    return self._parse_print()
-                elif kw == "log":
-                    return self._parse_log()
-                elif kw == "if":
-                    return self._parse_if()
-                elif kw in ("else", "end"):
-                    raise ParseError(
-                        f"'{kw}' está fuera de un bloque if en línea {t.line}, col {t.col}"
-                    )
+
+            if kw not in KEYWORDS:
+                raise ParseError(
+                    f"Instrucción no válida en línea {t.line}, col {t.col} "
+                    f"(palabra '{t.value}')."
+                )
+
+            if kw == "set":
+                return self._parse_set()
+            if kw == "print":
+                return self._parse_print()
+            if kw == "log":
+                return self._parse_log()
+            if kw == "if":
+                return self._parse_if()
+            if kw == "while":
+                return self._parse_while()
+            if kw == "writefile":
+                return self._parse_writefile()
+            if kw == "appendfile":
+                return self._parse_appendfile()
+            if kw == "readfile":
+                return self._parse_readfile()
+            if kw == "deletefile":
+                return self._parse_deletefile()
+            if kw in ("else", "end"):
+                raise ParseError(
+                    f"'{kw}' está fuera de un bloque if/while en línea {t.line}, col {t.col}"
+                )
+
         raise ParseError(
             f"Instrucción no válida en línea {t.line}, col {t.col}. "
-            f"Se esperaba set, print, log o if."
+            f"Se esperaba set, print, log, if, while o instrucción de archivo."
         )
 
     def _parse_set(self):
@@ -80,7 +102,6 @@ class Parser:
     def _parse_if(self):
         kw_if = self.take("IDENT")  
         cond_expr = self.parse_expr()
-  
         self._skip_separadores()
 
         then_block = []
@@ -91,7 +112,7 @@ class Parser:
             if t.kind == "IDENT":
                 v = t.value.lower()
                 if v == "else":
-                    self.take("IDENT")
+                    self.take("IDENT")  
                     self._skip_separadores()
                     else_block = []
                     while not self.at_eof():
@@ -101,20 +122,64 @@ class Parser:
                         else_block.append(self.parse_stmt())
                         self._skip_separadores()
                 elif v == "end":
-                    
-                    self.take("IDENT")
+                    self.take("IDENT")  
                     return ("IF", cond_expr, then_block, else_block, kw_if.line, kw_if.col)
 
-        
             then_block.append(self.parse_stmt())
             self._skip_separadores()
 
         raise ParseError(
-            f"Falta 'end' para cerrar el bloque if iniciado en línea {kw_if.line}, col {kw_if.col}"
+            f"Falta 'end' para cerrar el if iniciado en línea {kw_if.line}, col {kw_if.col}"
         )
 
+    def _parse_while(self):
+        kw_while = self.take("IDENT")  
+        cond_expr = self.parse_expr()
+        self._skip_separadores()
+
+        body = []
+        while not self.at_eof():
+            t = self.peek()
+            if t.kind == "IDENT" and t.value.lower() == "end":
+                self.take("IDENT")
+                return ("WHILE", cond_expr, body, kw_while.line, kw_while.col)
+            body.append(self.parse_stmt())
+            self._skip_separadores()
+
+        raise ParseError(
+            f"Falta 'end' para cerrar el while iniciado en línea {kw_while.line}, col {kw_while.col}"
+        )
+
+    def _parse_writefile(self):
+        kw = self.take("IDENT")  
+        path_expr = self.parse_expr()
+        self._skip_separadores()
+        content_expr = self.parse_expr()
+        return ("WRITEFILE", path_expr, content_expr, kw.line, kw.col)
+
+    def _parse_appendfile(self):
+        kw = self.take("IDENT")  
+        path_expr = self.parse_expr()
+        self._skip_separadores()
+        content_expr = self.parse_expr()
+        return ("APPENDFILE", path_expr, content_expr, kw.line, kw.col)
+
+    def _parse_readfile(self):
+        kw = self.take("IDENT") 
+        path_expr = self.parse_expr()
+        self._skip_separadores()
+        name_tok = self.take("IDENT")
+        return ("READFILE", path_expr, name_tok.value, kw.line, kw.col)
+
+    def _parse_deletefile(self):
+        kw = self.take("IDENT")  
+        path_expr = self.parse_expr()
+        return ("DELETEFILE", path_expr, kw.line, kw.col)
+
+   
     def parse_expr(self):
         return self._parse_comp()
+
 
     def _parse_comp(self):
         left = self._parse_sum()
@@ -133,7 +198,6 @@ class Parser:
             left = ("BINOP", "PLUS", left, right)
         return left
 
-    # term := STRING | NUMBER | IDENT
     def _parse_term(self):
         t = self.peek()
         if t.kind == "STRING":

@@ -1,9 +1,9 @@
 import re
 
 TOKEN_SPEC = [
-    ("SKIP",      r"[ \t]+"),
+    ("SKIP",      r"[ \t]+"),          
     ("NEWLINE",   r"\n"),
-    ("COMMENT",   r"#.*"),
+    ("COMMENT",   r"#.*"),            
 
     ("EQEQ",      r"=="),
     ("GTE",       r">="),
@@ -12,7 +12,7 @@ TOKEN_SPEC = [
     ("GT",        r">"),
     ("LT",        r"<"),
 
-    ("STRING",    r"\"([^\"\\]|\\.)*\""),
+    ("STRING",    r"\"([^\"\\]|\\.)*\""),   
     ("NUMBER",    r"\d+"),
     ("IDENT",     r"[A-Za-z_][A-Za-z0-9_]*"),
     ("PLUS",      r"\+"),
@@ -37,11 +37,13 @@ def tokenize(text):
     col = 1
     pos = 0
     n = len(text)
+
     while pos < n:
         m = MASTER_RE.match(text, pos)
         if not m:
             ch = text[pos]
             raise SyntaxError(f"Caracter inesperado '{ch}' en línea {line}, col {col}")
+
         kind = m.lastgroup
         val = m.group()
 
@@ -49,7 +51,6 @@ def tokenize(text):
             line += 1
             col = 1
         elif kind in ("SKIP", "COMMENT"):
-    
             pass
         else:
             yield Token(kind, val, line, col)

@@ -1,0 +1,17 @@
+2025-11-24 11:49:12 [SET] contador = 1
+2025-11-24 11:49:12 [PRINT] Valor de contador: 1
+2025-11-24 11:49:12 [LOG] Loop contador = 1
+2025-11-24 11:49:12 [SET] contador = 2
+2025-11-24 11:49:12 [PRINT] Valor de contador: 2
+2025-11-24 11:49:12 [LOG] Loop contador = 2
+2025-11-24 11:49:12 [SET] contador = 3
+2025-11-24 11:49:12 [PRINT] Valor de contador: 3
+2025-11-24 11:49:12 [LOG] Loop contador = 3
+2025-11-24 11:49:12 [SET] contador = 4
+2025-11-24 11:49:12 [PRINT] Valor de contador: 4
+2025-11-24 11:49:12 [LOG] Loop contador = 4
+2025-11-24 11:49:12 [SET] contador = 5
+2025-11-24 11:49:12 [PRINT] Valor de contador: 5
+2025-11-24 11:49:12 [LOG] Loop contador = 5
+2025-11-24 11:49:12 [SET] contador = 6
+2025-11-24 11:49:12 [PRINT] TerminÃ© el while
