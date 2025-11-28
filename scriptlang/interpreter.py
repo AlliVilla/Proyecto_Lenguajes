@@ -125,6 +125,12 @@ class Interpreter:
                 if isinstance(a, str) or isinstance(b, str):
                     return str(a) + str(b)
                 return a + b
+            if op == "MINUS":
+                return a - b
+            if op == "STAR":
+                return a * b
+            if op == "SLASH":
+                return a // b
 
             if op == "GT":
                 return a > b
@@ -138,6 +144,14 @@ class Interpreter:
                 return a == b
             if op == "NEQ":
                 return a != b
+
+        if kind == "LOGIC":
+            _, op, left, right = node
+            val_left = self.eval_expr(left)
+            if op == "AND":
+                return bool(val_left) and bool(self.eval_expr(right))
+            if op == "OR":
+                return bool(val_left) or bool(self.eval_expr(right))
 
         raise RuntimeErrorSL(f"Expresión no soportada: {node}")
 

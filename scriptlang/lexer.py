@@ -1,21 +1,27 @@
 import re
 
 TOKEN_SPEC = [
-    ("SKIP",      r"[ \t]+"),          
+    ("SKIP",      r"[ \t]+"),
     ("NEWLINE",   r"\n"),
-    ("COMMENT",   r"#.*"),            
+    ("COMMENT",   r"#.*"),
 
     ("EQEQ",      r"=="),
-    ("GTE",       r">="),
-    ("LTE",       r"<="),
+    ("GTE",       r"\>="),
+    ("LTE",       r"\<="),
     ("NEQ",       r"!="),
-    ("GT",        r">"),
-    ("LT",        r"<"),
+    ("GT",        r"\>"),
+    ("LT",        r"\<"),
 
-    ("STRING",    r"\"([^\"\\]|\\.)*\""),   
+    ("STRING",    r'"([^\\"\\\\]|\\\\.)*"'),
     ("NUMBER",    r"\d+"),
     ("IDENT",     r"[A-Za-z_][A-Za-z0-9_]*"),
     ("PLUS",      r"\+"),
+    ("MINUS",     r"-"),
+    ("STAR",      r"\*"),
+    ("SLASH",     r"/"),
+    ("LPAREN",    r"\("),
+    ("RPAREN",    r"\)"),
+    ("COMMA",     r","),
     ("EQUAL",     r"="),
     ("SEMICOL",   r";"),
 ]
@@ -28,7 +34,6 @@ class Token:
         self.value = value
         self.line = line
         self.col = col
-
     def __repr__(self):
         return f"Token({self.kind},{self.value!r},{self.line},{self.col})"
 
@@ -37,16 +42,13 @@ def tokenize(text):
     col = 1
     pos = 0
     n = len(text)
-
     while pos < n:
         m = MASTER_RE.match(text, pos)
         if not m:
             ch = text[pos]
             raise SyntaxError(f"Caracter inesperado '{ch}' en línea {line}, col {col}")
-
         kind = m.lastgroup
         val = m.group()
-
         if kind == "NEWLINE":
             line += 1
             col = 1
@@ -54,10 +56,7 @@ def tokenize(text):
             pass
         else:
             yield Token(kind, val, line, col)
-
         pos = m.end()
         if kind != "NEWLINE":
             col += len(val)
-
-
     yield Token("EOF", "", line, col)
