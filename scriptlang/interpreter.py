@@ -3,6 +3,10 @@ from pathlib import Path
 class RuntimeErrorSL(Exception):
     pass
 
+class ReturnException(Exception):
+    def __init__(self, value):
+        self.value = value
+
 class Interpreter:
     def __init__(self, logger=None):
         self.env = {}    
@@ -98,6 +102,37 @@ class Interpreter:
             except Exception as e:
                 raise RuntimeErrorSL(f"No se pudo borrar el archivo '{path_str}': {e}")
 
+        elif op == "FUNCTION":
+            _, name, params, body, line, col = stmt
+            self.env[name] = (params, body)
+            self._log(f"[FUNCTION] {name}({', '.join(params)})")
+
+        elif op == "RETURN":
+            _, expr, line, col = stmt
+            val = self.eval_expr(expr)
+            raise ReturnException(val)
+
+        elif op == "CALL":
+            _, name, args, line, col = stmt
+            if name not in self.env:
+                raise RuntimeErrorSL(f"Función no definida: {name}")
+            params, body = self.env[name]
+            if len(args) != len(params):
+                raise RuntimeErrorSL(f"Número incorrecto de argumentos para {name}: esperado {len(params)}, recibido {len(args)}")
+            # Create new scope
+            old_env = self.env.copy()
+            for param, arg_expr in zip(params, args):
+                self.env[param] = self.eval_expr(arg_expr)
+            try:
+                for s in body:
+                    self._exec_stmt(s)
+            except ReturnException as e:
+                # Function returned, restore env and continue
+                self.env = old_env
+                return e.value
+            finally:
+                self.env = old_env
+
         else:
             raise RuntimeErrorSL(f"Instrucción desconocida: {op}")
 
@@ -144,6 +179,44 @@ class Interpreter:
                 return a == b
             if op == "NEQ":
                 return a != b
+
+        if kind == "CALL_EXPR":
+            _, name, args = node
+            if name == "substring":
+                # Built-in substring function
+                if len(args) != 3:
+                    raise RuntimeErrorSL(f"substring espera 3 argumentos, recibió {len(args)}")
+                s = self.eval_expr(args[0])
+                start = self.eval_expr(args[1])
+                end = self.eval_expr(args[2])
+                if not isinstance(s, str):
+                    raise RuntimeErrorSL("El primer argumento de substring debe ser una cadena")
+                if not isinstance(start, int) or not isinstance(end, int):
+                    raise RuntimeErrorSL("Los índices de substring deben ser enteros")
+                try:
+                    return s[start:end]
+                except IndexError:
+                    raise RuntimeErrorSL("Índices fuera de rango en substring")
+            elif name not in self.env:
+                raise RuntimeErrorSL(f"Función no definida: {name}")
+            params, body = self.env[name]
+            if len(args) != len(params):
+                raise RuntimeErrorSL(f"Número incorrecto de argumentos para {name}: esperado {len(params)}, recibido {len(args)}")
+            # Create new scope
+            old_env = self.env.copy()
+            for param, arg_expr in zip(params, args):
+                self.env[param] = self.eval_expr(arg_expr)
+            try:
+                for s in body:
+                    self._exec_stmt(s)
+            except ReturnException as e:
+                # Function returned, restore env and return value
+                self.env = old_env
+                return e.value
+            finally:
+                self.env = old_env
+            # If no return, return None or raise error?
+            raise RuntimeErrorSL(f"Función '{name}' no retornó un valor")
 
         if kind == "LOGIC":
             _, op, left, right = node

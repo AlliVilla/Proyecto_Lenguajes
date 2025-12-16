@@ -4,6 +4,8 @@ KEYWORDS = {
     "set", "print", "log",
     "if", "else", "end",
     "while",
+    "function",
+    "return",
     "writefile", "appendfile", "readfile", "deletefile"
 }
 
@@ -34,9 +36,7 @@ class Parser:
         while self.peek().kind in ("SEMICOL", "NEWLINE"):
             self.take()
 
-    # ---------------------------------------------------------------------
-    # Program / statements
-    # ---------------------------------------------------------------------
+    # Program and statements
     def parse_program(self):
         stmts = []
         self._skip_separadores()
@@ -49,41 +49,48 @@ class Parser:
         t = self.peek()
         if t.kind == "IDENT":
             kw = t.value.lower()
-            if kw not in KEYWORDS:
-                raise ParseError(
-                    f"Instrucción no válida en línea {t.line}, col {t.col} (palabra '{t.value}')."
-                )
-            # dispatch based on keyword
-            if kw == "set":
-                return self._parse_set()
-            if kw == "print":
-                return self._parse_print()
-            if kw == "log":
-                return self._parse_log()
-            if kw == "if":
-                return self._parse_if()
-            if kw == "while":
-                return self._parse_while()
-            if kw == "writefile":
-                return self._parse_writefile()
-            if kw == "appendfile":
-                return self._parse_appendfile()
-            if kw == "readfile":
-                return self._parse_readfile()
-            if kw == "deletefile":
-                return self._parse_deletefile()
-            if kw in ("else", "end"):
-                raise ParseError(
-                    f"'{kw}' está fuera de un bloque if/while en línea {t.line}, col {t.col}"
-                )
+            if kw in KEYWORDS:
+                # dispatch  of keyword
+                if kw == "set":
+                    return self._parse_set()
+                if kw == "print":
+                    return self._parse_print()
+                if kw == "log":
+                    return self._parse_log()
+                if kw == "if":
+                    return self._parse_if()
+                if kw == "while":
+                    return self._parse_while()
+                if kw == "writefile":
+                    return self._parse_writefile()
+                if kw == "appendfile":
+                    return self._parse_appendfile()
+                if kw == "readfile":
+                    return self._parse_readfile()
+                if kw == "deletefile":
+                    return self._parse_deletefile()
+                if kw == "function":
+                    return self._parse_function()
+                if kw == "return":
+                    return self._parse_return()
+                if kw in ("else", "end"):
+                    raise ParseError(
+                        f"'{kw}' está fuera de un bloque if/while en línea {t.line}, col {t.col}"
+                    )
+            else:
+                if self.tokens[self.i + 1].kind == "LPAREN":
+                    return self._parse_call()
+                else:
+                    raise ParseError(
+                        f"Instrucción no válida en línea {t.line}, col {t.col} (palabra '{t.value}')."
+                    )
         raise ParseError(
             f"Instrucción no válida en línea {t.line}, col {t.col}. "
-            f"Se esperaba set, print, log, if, while o instrucción de archivo."
+            f"Se esperaba set, print, log, if, while, return o instrucción de archivo."
         )
 
-    # ---------------------------------------------------------------------
     # Individual statement parsers
-    # ---------------------------------------------------------------------
+    
     def _parse_set(self):
         kw = self.take("IDENT")
         name_tok = self.take("IDENT")
@@ -173,9 +180,53 @@ class Parser:
         path_expr = self.parse_expr()
         return ("DELETEFILE", path_expr, kw.line, kw.col)
 
-    # ---------------------------------------------------------------------
+    def _parse_function(self):
+        kw = self.take("IDENT")
+        name_tok = self.take("IDENT")
+        self.take("LPAREN")
+        params = []
+        if self.peek().kind != "RPAREN":
+            while True:
+                param_tok = self.take("IDENT")
+                params.append(param_tok.value)
+                if self.peek().kind == "COMMA":
+                    self.take("COMMA")
+                else:
+                    break
+        self.take("RPAREN")
+        self._skip_separadores()
+        body = []
+        while not self.at_eof():
+            t = self.peek()
+            if t.kind == "IDENT" and t.value.lower() == "end":
+                self.take("IDENT")
+                return ("FUNCTION", name_tok.value, params, body, kw.line, kw.col)
+            body.append(self.parse_stmt())
+            self._skip_separadores()
+        raise ParseError(
+            f"Falta 'end' para cerrar la función '{name_tok.value}' iniciada en línea {kw.line}, col {kw.col}"
+        )
+
+    def _parse_call(self):
+        name_tok = self.take("IDENT")
+        self.take("LPAREN")
+        args = []
+        if self.peek().kind != "RPAREN":
+            while True:
+                args.append(self.parse_expr())
+                if self.peek().kind == "COMMA":
+                    self.take("COMMA")
+                else:
+                    break
+        self.take("RPAREN")
+        return ("CALL", name_tok.value, args, name_tok.line, name_tok.col)
+
+    def _parse_return(self):
+        kw = self.take("IDENT")
+        expr = self.parse_expr()
+        return ("RETURN", expr, kw.line, kw.col)
+
     # Expressions
-    # ---------------------------------------------------------------------
     def parse_expr(self):
         """Parse expression with lowest precedence (logical and/or)."""
         return self._parse_logic()
@@ -233,7 +284,20 @@ class Parser:
             return ("NUMBER", int(tok.value))
         if t.kind == "IDENT":
             name = self.take("IDENT").value
-            return ("VAR", name)
+            if self.peek().kind == "LPAREN":
+                self.take("LPAREN")
+                args = []
+                if self.peek().kind != "RPAREN":
+                    while True:
+                        args.append(self.parse_expr())
+                        if self.peek().kind == "COMMA":
+                            self.take("COMMA")
+                        else:
+                            break
+                self.take("RPAREN")
+                return ("CALL_EXPR", name, args)
+            else:
+                return ("VAR", name)
         raise ParseError(
             f"Token inesperado {t.kind} en línea {t.line}, col {t.col}"
         )

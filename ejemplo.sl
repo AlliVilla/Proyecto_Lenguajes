@@ -1,75 +1,61 @@
-# Comprehensive lexer/parser test script
-
-# Variable assignments and arithmetic (now supports '+', '-', '*', '/')
-set a = 5
-set b = 3
-set sum = a + b
-# Using newly supported operators
-set product = a * b   # '*' now recognized by lexer
-set diff = a - b      # '-' now recognized by lexer
-set quotient = b / a  # '/' now recognized by lexer
-set expr = (a + b) * 2  # parentheses for grouping
-
-print "Assignments and arithmetic:"
-print "sum = " + sum
-print "product = " + product
-print "diff = " + diff
-print "quotient = " + quotient
-print "expr = " + expr
-
-# String literals and concatenation
-print "Testing string concatenation: " + "hello" + " " + "world"
-
-# Logging
-log "This is a log message."
-
-# Conditional statements with all comparison operators (these are supported)
-if a < b
-    log "a < b"
-end
-if a > b
-    log "a > b"
-end
-if a <= b
-    log "a <= b"
-end
-if a >= b
-    log "a >= b"
-end
-if a == b
-    log "a == b"
-end
-if a != b
-    log "a != b"
-end
-
-# Logical operators
-if a < b and b > 0
-    log "Logical AND works"
-end
-if a == 5 or b == 5
-    log "Logical OR works"
-end
-
-# Nested if-else
-if a == 5
-    if b == 3
-        log "Nested condition true"
-    else
-        log "Nested else branch"
+# Función recursiva factorial
+function factorial(n)
+    # Caso base
+    if n <= 1
+        return 1
     end
-else
-    log "Outer else branch"
+    
+    # Caso recursivo
+    return n * factorial(n - 1)
 end
 
-# While loop (assuming language supports it)
-set counter = 0
-while counter < 3
-    print "Loop iteration " + counter
-    set counter = counter + 1
+# Probar factorial recursivo
+print "=== Testing recursive factorial ==="
+set fact5 = factorial(5)
+print "factorial(5) = " + fact5
+
+set fact0 = factorial(0)
+print "factorial(0) = " + fact0
+
+set fact10 = factorial(10)
+print "factorial(10) = " + fact10
+
+# Función recursiva Fibonacci
+function fibonacci(n)
+    if n <= 0
+        return 0
+    end
+    if n == 1
+        return 1
+    end
+    return fibonacci(n - 1) + fibonacci(n - 2)
 end
 
-#function greet(name)
-#   print "Hello, " + name
-#end
-#greet("Alice")
+# Probar Fibonacci recursivo
+print "=== Testing recursive fibonacci ==="
+set fib6 = fibonacci(6)
+print "fibonacci(6) = " + fib6
+
+# Función recursiva con concatenación (invertir string)
+function reverse_string(s, index)
+    if index < 0
+        return ""
+    end
+    set char = substring(s, index, index + 1)
+    return char + reverse_string(s, index - 1)
+end
+
+# Función auxiliar para longitud de string (asumiendo que existe)
+function string_length(s)
+    set len = 0
+    while substring(s, len, len + 1) != ""
+        set len = len + 1
+    end
+    return len
+end
+
+# Probar reverse_string
+print "=== Testing recursive string reverse ==="
+set original = "hello"
+set reversed = reverse_string(original, string_length(original) - 1)
+print "Reversed of 'hello' = " + reversed

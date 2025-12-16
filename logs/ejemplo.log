@@ -1,0 +1,322 @@
+2025-11-27 18:44:13 [SET] a = 5
+2025-11-27 18:44:13 [SET] b = 3
+2025-11-27 18:44:13 [SET] sum = 8
+2025-11-27 18:44:13 [SET] product = 15
+2025-11-27 18:44:13 [SET] diff = 2
+2025-11-27 18:44:13 [SET] quotient = 0
+2025-11-27 18:44:13 [SET] expr = 16
+2025-11-27 18:44:13 [PRINT] Assignments and arithmetic:
+2025-11-27 18:44:13 [PRINT] sum = 8
+2025-11-27 18:44:13 [PRINT] product = 15
+2025-11-27 18:44:13 [PRINT] diff = 2
+2025-11-27 18:44:13 [PRINT] quotient = 0
+2025-11-27 18:44:13 [PRINT] expr = 16
+2025-11-27 18:44:13 [PRINT] Testing string concatenation: hello world
+2025-11-27 18:44:13 [LOG] This is a log message.
+2025-11-27 18:44:13 [LOG] a > b
+2025-11-27 18:44:13 [LOG] a >= b
+2025-11-27 18:44:13 [LOG] a != b
+2025-11-27 18:44:13 [LOG] Logical OR works
+2025-11-27 18:44:13 [LOG] Nested condition true
+2025-11-27 18:44:13 [SET] counter = 0
+2025-11-27 18:44:13 [PRINT] Loop iteration 0
+2025-11-27 18:44:13 [SET] counter = 1
+2025-11-27 18:44:13 [PRINT] Loop iteration 1
+2025-11-27 18:44:13 [SET] counter = 2
+2025-11-27 18:44:13 [PRINT] Loop iteration 2
+2025-11-27 18:44:13 [SET] counter = 3
+2025-11-27 18:44:25 [SET] a = 5
+2025-11-27 18:44:25 [SET] b = 3
+2025-11-27 18:44:25 [SET] sum = 8
+2025-11-27 18:44:25 [SET] product = 15
+2025-11-27 18:44:25 [SET] diff = 2
+2025-11-27 18:44:25 [SET] quotient = 0
+2025-11-27 18:44:25 [SET] expr = 16
+2025-11-27 18:44:25 [PRINT] Assignments and arithmetic:
+2025-11-27 18:44:25 [PRINT] sum = 8
+2025-11-27 18:44:25 [PRINT] product = 15
+2025-11-27 18:44:25 [PRINT] diff = 2
+2025-11-27 18:44:25 [PRINT] quotient = 0
+2025-11-27 18:44:25 [PRINT] expr = 16
+2025-11-27 18:44:25 [PRINT] Testing string concatenation: hello world
+2025-11-27 18:44:25 [LOG] This is a log message.
+2025-11-27 18:44:25 [LOG] a > b
+2025-11-27 18:44:25 [LOG] a >= b
+2025-11-27 18:44:25 [LOG] a != b
+2025-11-27 18:44:25 [LOG] Logical OR works
+2025-11-27 18:44:25 [LOG] Nested condition true
+2025-11-27 18:44:25 [SET] counter = 0
+2025-11-27 18:44:25 [PRINT] Loop iteration 0
+2025-11-27 18:44:25 [SET] counter = 1
+2025-11-27 18:44:25 [PRINT] Loop iteration 1
+2025-11-27 18:44:25 [SET] counter = 2
+2025-11-27 18:44:25 [PRINT] Loop iteration 2
+2025-11-27 18:44:25 [SET] counter = 3
+2025-11-27 18:45:24 [SET] a = 5
+2025-11-27 18:45:24 [SET] b = 3
+2025-11-27 18:45:24 [SET] sum = 8
+2025-11-27 18:45:24 [SET] product = 15
+2025-11-27 18:45:24 [SET] diff = 2
+2025-11-27 18:45:24 [SET] quotient = 0
+2025-11-27 18:45:24 [SET] expr = 16
+2025-11-27 18:45:24 [PRINT] Assignments and arithmetic:
+2025-11-27 18:45:24 [PRINT] sum = 8
+2025-11-27 18:45:24 [PRINT] product = 15
+2025-11-27 18:45:24 [PRINT] diff = 2
+2025-11-27 18:45:24 [PRINT] quotient = 0
+2025-11-27 18:45:24 [PRINT] expr = 16
+2025-11-27 18:45:24 [PRINT] Testing string concatenation: hello world
+2025-11-27 18:45:24 [LOG] This is a log message.
+2025-11-27 18:45:24 [LOG] a > b
+2025-11-27 18:45:24 [LOG] a >= b
+2025-11-27 18:45:24 [LOG] a != b
+2025-11-27 18:45:24 [LOG] Logical OR works
+2025-11-27 18:45:24 [LOG] Nested condition true
+2025-11-27 18:45:24 [SET] counter = 0
+2025-11-27 18:45:24 [PRINT] Loop iteration 0
+2025-11-27 18:45:24 [SET] counter = 1
+2025-11-27 18:45:24 [PRINT] Loop iteration 1
+2025-11-27 18:45:24 [SET] counter = 2
+2025-11-27 18:45:24 [PRINT] Loop iteration 2
+2025-11-27 18:45:24 [SET] counter = 3
+2025-11-27 18:45:24 [FUNCTION] greet(name)
+2025-11-27 18:45:24 [PRINT] Hello, Alice
+2025-11-27 18:45:56 [SET] a = 5
+2025-11-27 18:45:56 [SET] b = 3
+2025-11-27 18:45:56 [SET] sum = 8
+2025-11-27 18:45:56 [SET] product = 15
+2025-11-27 18:45:56 [SET] diff = 2
+2025-11-27 18:45:56 [SET] quotient = 0
+2025-11-27 18:45:56 [SET] expr = 16
+2025-11-27 18:45:56 [PRINT] Assignments and arithmetic:
+2025-11-27 18:45:56 [PRINT] sum = 8
+2025-11-27 18:45:56 [PRINT] product = 15
+2025-11-27 18:45:56 [PRINT] diff = 2
+2025-11-27 18:45:56 [PRINT] quotient = 0
+2025-11-27 18:45:56 [PRINT] expr = 16
+2025-11-27 18:45:56 [PRINT] Testing string concatenation: hello world
+2025-11-27 18:45:56 [LOG] This is a log message.
+2025-11-27 18:45:56 [LOG] a > b
+2025-11-27 18:45:56 [LOG] a >= b
+2025-11-27 18:45:56 [LOG] a != b
+2025-11-27 18:45:56 [LOG] Logical OR works
+2025-11-27 18:45:56 [LOG] Nested condition true
+2025-11-27 18:45:56 [SET] counter = 0
+2025-11-27 18:45:56 [PRINT] Loop iteration 0
+2025-11-27 18:45:56 [SET] counter = 1
+2025-11-27 18:45:56 [PRINT] Loop iteration 1
+2025-11-27 18:45:56 [SET] counter = 2
+2025-11-27 18:45:56 [PRINT] Loop iteration 2
+2025-11-27 18:45:56 [SET] counter = 3
+2025-11-27 18:45:56 [FUNCTION] greet(name)
+2025-11-27 18:45:56 [PRINT] Hello, Alice
+2025-11-27 18:46:58 [SET] a = 5
+2025-11-27 18:46:58 [SET] b = 3
+2025-11-27 18:46:58 [SET] sum = 8
+2025-11-27 18:46:58 [SET] product = 15
+2025-11-27 18:46:58 [SET] diff = 2
+2025-11-27 18:46:58 [SET] quotient = 0
+2025-11-27 18:46:58 [SET] expr = 16
+2025-11-27 18:46:58 [PRINT] Assignments and arithmetic:
+2025-11-27 18:46:58 [PRINT] sum = 8
+2025-11-27 18:46:58 [PRINT] product = 15
+2025-11-27 18:46:58 [PRINT] diff = 2
+2025-11-27 18:46:58 [PRINT] quotient = 0
+2025-11-27 18:46:58 [PRINT] expr = 16
+2025-11-27 18:46:58 [PRINT] Testing string concatenation: hello world
+2025-11-27 18:46:58 [LOG] This is a log message.
+2025-11-27 18:46:58 [LOG] a > b
+2025-11-27 18:46:58 [LOG] a >= b
+2025-11-27 18:46:58 [LOG] a != b
+2025-11-27 18:46:58 [LOG] Logical OR works
+2025-11-27 18:46:58 [LOG] Nested condition true
+2025-11-27 18:46:58 [FUNCTION] greet(name)
+2025-11-27 18:46:58 [PRINT] Hello, Alice
+2025-11-27 18:46:58 [SET] counter = 0
+2025-11-27 18:46:58 [PRINT] Loop iteration 0
+2025-11-27 18:46:58 [SET] counter = 1
+2025-11-27 18:46:58 [PRINT] Loop iteration 1
+2025-11-27 18:46:58 [SET] counter = 2
+2025-11-27 18:46:58 [PRINT] Loop iteration 2
+2025-11-27 18:46:58 [SET] counter = 3
+2025-11-27 18:51:58 [FUNCTION] factorial(n)
+2025-11-27 18:51:58 [PRINT] === Testing recursive factorial ===
+2025-11-27 18:52:35 [FUNCTION] factorial(n)
+2025-11-27 18:52:35 [PRINT] === Testing recursive factorial ===
+2025-11-27 18:52:35 [SET] fact5 = 120
+2025-11-27 18:52:35 [PRINT] factorial(5) = 120
+2025-11-27 18:52:35 [SET] fact0 = 1
+2025-11-27 18:52:35 [PRINT] factorial(0) = 1
+2025-11-27 18:52:35 [SET] fact10 = 3628800
+2025-11-27 18:52:35 [PRINT] factorial(10) = 3628800
+2025-11-27 18:52:35 [FUNCTION] fibonacci(n)
+2025-11-27 18:52:35 [PRINT] === Testing recursive fibonacci ===
+2025-11-27 18:52:35 [SET] fib6 = 8
+2025-11-27 18:52:35 [PRINT] fibonacci(6) = 8
+2025-11-27 18:52:35 [FUNCTION] reverse_string(s, index)
+2025-11-27 18:52:35 [FUNCTION] string_length(s)
+2025-11-27 18:52:35 [PRINT] === Testing recursive string reverse ===
+2025-11-27 18:52:35 [SET] original = 'hello'
+2025-11-27 18:52:35 [SET] len = 0
+2025-11-27 18:53:12 [FUNCTION] factorial(n)
+2025-11-27 18:53:12 [PRINT] === Testing recursive factorial ===
+2025-11-27 18:53:12 [SET] fact5 = 120
+2025-11-27 18:53:12 [PRINT] factorial(5) = 120
+2025-11-27 18:53:12 [SET] fact0 = 1
+2025-11-27 18:53:12 [PRINT] factorial(0) = 1
+2025-11-27 18:53:12 [SET] fact10 = 3628800
+2025-11-27 18:53:12 [PRINT] factorial(10) = 3628800
+2025-11-27 18:53:12 [FUNCTION] fibonacci(n)
+2025-11-27 18:53:12 [PRINT] === Testing recursive fibonacci ===
+2025-11-27 18:53:12 [SET] fib6 = 8
+2025-11-27 18:53:12 [PRINT] fibonacci(6) = 8
+2025-11-27 18:53:12 [FUNCTION] reverse_string(s, index)
+2025-11-27 18:53:12 [FUNCTION] string_length(s)
+2025-11-27 18:53:12 [PRINT] === Testing recursive string reverse ===
+2025-11-27 18:53:12 [SET] original = 'hello'
+2025-11-27 18:53:12 [SET] len = 0
+2025-11-27 18:54:31 [FUNCTION] factorial(n)
+2025-11-27 18:54:31 [PRINT] === Testing recursive factorial ===
+2025-11-27 18:54:31 [SET] fact5 = 120
+2025-11-27 18:54:31 [PRINT] factorial(5) = 120
+2025-11-27 18:54:31 [SET] fact0 = 1
+2025-11-27 18:54:31 [PRINT] factorial(0) = 1
+2025-11-27 18:54:31 [SET] fact10 = 3628800
+2025-11-27 18:54:31 [PRINT] factorial(10) = 3628800
+2025-11-27 18:54:31 [FUNCTION] fibonacci(n)
+2025-11-27 18:54:31 [PRINT] === Testing recursive fibonacci ===
+2025-11-27 18:54:31 [SET] fib6 = 8
+2025-11-27 18:54:31 [PRINT] fibonacci(6) = 8
+2025-11-27 18:54:31 [FUNCTION] reverse_string(s, index)
+2025-11-27 18:54:31 [FUNCTION] string_length(s)
+2025-11-27 18:54:31 [PRINT] === Testing recursive string reverse ===
+2025-11-27 18:54:31 [SET] original = 'hello'
+2025-11-27 18:54:31 [SET] len = 0
+2025-11-27 18:54:31 [SET] len = 1
+2025-11-27 18:54:31 [SET] len = 2
+2025-11-27 18:54:31 [SET] len = 3
+2025-11-27 18:54:31 [SET] len = 4
+2025-11-27 18:54:31 [SET] len = 5
+2025-11-27 18:54:31 [SET] char = 'o'
+2025-11-27 18:54:31 [SET] char = 'l'
+2025-11-27 18:54:31 [SET] char = 'l'
+2025-11-27 18:54:31 [SET] char = 'e'
+2025-11-27 18:54:31 [SET] char = 'h'
+2025-11-27 18:54:31 [SET] reversed = 'olleh'
+2025-11-27 18:54:31 [PRINT] Reversed of 'hello' = olleh
+2025-11-27 19:06:53 [FUNCTION] factorial(n)
+2025-11-27 19:06:53 [PRINT] === Testing recursive factorial ===
+2025-11-27 19:06:53 [SET] fact5 = 120
+2025-11-27 19:06:53 [PRINT] factorial(5) = 120
+2025-11-27 19:06:53 [SET] fact0 = 1
+2025-11-27 19:06:53 [PRINT] factorial(0) = 1
+2025-11-27 19:06:53 [SET] fact10 = 3628800
+2025-11-27 19:06:53 [PRINT] factorial(10) = 3628800
+2025-11-27 19:06:53 [FUNCTION] fibonacci(n)
+2025-11-27 19:06:53 [PRINT] === Testing recursive fibonacci ===
+2025-11-27 19:06:53 [SET] fib6 = 8
+2025-11-27 19:06:53 [PRINT] fibonacci(6) = 8
+2025-11-27 19:06:53 [FUNCTION] reverse_string(s, index)
+2025-11-27 19:06:53 [FUNCTION] string_length(s)
+2025-11-27 19:06:53 [PRINT] === Testing recursive string reverse ===
+2025-11-27 19:06:53 [SET] original = 'hello'
+2025-11-27 19:06:53 [SET] len = 0
+2025-11-27 19:06:53 [SET] len = 1
+2025-11-27 19:06:53 [SET] len = 2
+2025-11-27 19:06:53 [SET] len = 3
+2025-11-27 19:06:53 [SET] len = 4
+2025-11-27 19:06:53 [SET] len = 5
+2025-11-27 19:06:53 [SET] char = 'o'
+2025-11-27 19:06:53 [SET] char = 'l'
+2025-11-27 19:06:53 [SET] char = 'l'
+2025-11-27 19:06:53 [SET] char = 'e'
+2025-11-27 19:06:53 [SET] char = 'h'
+2025-11-27 19:06:53 [SET] reversed = 'olleh'
+2025-11-27 19:06:53 [PRINT] Reversed of 'hello' = olleh
+2025-12-15 20:26:35 [FUNCTION] factorial(n)
+2025-12-15 20:26:35 [PRINT] === Testing recursive factorial ===
+2025-12-15 20:26:35 [SET] fact5 = 120
+2025-12-15 20:26:35 [PRINT] factorial(5) = 120
+2025-12-15 20:26:35 [SET] fact0 = 1
+2025-12-15 20:26:35 [PRINT] factorial(0) = 1
+2025-12-15 20:26:35 [SET] fact10 = 3628800
+2025-12-15 20:26:35 [PRINT] factorial(10) = 3628800
+2025-12-15 20:26:35 [FUNCTION] fibonacci(n)
+2025-12-15 20:26:35 [PRINT] === Testing recursive fibonacci ===
+2025-12-15 20:26:35 [SET] fib6 = 8
+2025-12-15 20:26:35 [PRINT] fibonacci(6) = 8
+2025-12-15 20:26:35 [FUNCTION] reverse_string(s, index)
+2025-12-15 20:26:35 [FUNCTION] string_length(s)
+2025-12-15 20:26:35 [PRINT] === Testing recursive string reverse ===
+2025-12-15 20:26:35 [SET] original = 'hello'
+2025-12-15 20:26:35 [SET] len = 0
+2025-12-15 20:26:35 [SET] len = 1
+2025-12-15 20:26:35 [SET] len = 2
+2025-12-15 20:26:35 [SET] len = 3
+2025-12-15 20:26:35 [SET] len = 4
+2025-12-15 20:26:35 [SET] len = 5
+2025-12-15 20:26:35 [SET] char = 'o'
+2025-12-15 20:26:35 [SET] char = 'l'
+2025-12-15 20:26:35 [SET] char = 'l'
+2025-12-15 20:26:35 [SET] char = 'e'
+2025-12-15 20:26:35 [SET] char = 'h'
+2025-12-15 20:26:35 [SET] reversed = 'olleh'
+2025-12-15 20:26:35 [PRINT] Reversed of 'hello' = olleh
+2025-12-15 20:26:39 [FUNCTION] factorial(n)
+2025-12-15 20:26:39 [PRINT] === Testing recursive factorial ===
+2025-12-15 20:26:39 [SET] fact5 = 120
+2025-12-15 20:26:39 [PRINT] factorial(5) = 120
+2025-12-15 20:26:39 [SET] fact0 = 1
+2025-12-15 20:26:39 [PRINT] factorial(0) = 1
+2025-12-15 20:26:39 [SET] fact10 = 3628800
+2025-12-15 20:26:39 [PRINT] factorial(10) = 3628800
+2025-12-15 20:26:39 [FUNCTION] fibonacci(n)
+2025-12-15 20:26:39 [PRINT] === Testing recursive fibonacci ===
+2025-12-15 20:26:39 [SET] fib6 = 8
+2025-12-15 20:26:39 [PRINT] fibonacci(6) = 8
+2025-12-15 20:26:39 [FUNCTION] reverse_string(s, index)
+2025-12-15 20:26:39 [FUNCTION] string_length(s)
+2025-12-15 20:26:39 [PRINT] === Testing recursive string reverse ===
+2025-12-15 20:26:39 [SET] original = 'hello'
+2025-12-15 20:26:39 [SET] len = 0
+2025-12-15 20:26:39 [SET] len = 1
+2025-12-15 20:26:39 [SET] len = 2
+2025-12-15 20:26:39 [SET] len = 3
+2025-12-15 20:26:39 [SET] len = 4
+2025-12-15 20:26:39 [SET] len = 5
+2025-12-15 20:26:39 [SET] char = 'o'
+2025-12-15 20:26:39 [SET] char = 'l'
+2025-12-15 20:26:39 [SET] char = 'l'
+2025-12-15 20:26:39 [SET] char = 'e'
+2025-12-15 20:26:39 [SET] char = 'h'
+2025-12-15 20:26:39 [SET] reversed = 'olleh'
+2025-12-15 20:26:39 [PRINT] Reversed of 'hello' = olleh
+2025-12-15 20:39:03 [FUNCTION] factorial(n)
+2025-12-15 20:39:03 [PRINT] === Testing recursive factorial ===
+2025-12-15 20:39:03 [SET] fact5 = 120
+2025-12-15 20:39:03 [PRINT] factorial(5) = 120
+2025-12-15 20:39:03 [SET] fact0 = 1
+2025-12-15 20:39:03 [PRINT] factorial(0) = 1
+2025-12-15 20:39:03 [SET] fact10 = 3628800
+2025-12-15 20:39:03 [PRINT] factorial(10) = 3628800
+2025-12-15 20:39:03 [FUNCTION] fibonacci(n)
+2025-12-15 20:39:03 [PRINT] === Testing recursive fibonacci ===
+2025-12-15 20:39:03 [SET] fib6 = 8
+2025-12-15 20:39:03 [PRINT] fibonacci(6) = 8
+2025-12-15 20:39:03 [FUNCTION] reverse_string(s, index)
+2025-12-15 20:39:03 [FUNCTION] string_length(s)
+2025-12-15 20:39:03 [PRINT] === Testing recursive string reverse ===
+2025-12-15 20:39:03 [SET] original = 'hello'
+2025-12-15 20:39:03 [SET] len = 0
+2025-12-15 20:39:03 [SET] len = 1
+2025-12-15 20:39:03 [SET] len = 2
+2025-12-15 20:39:03 [SET] len = 3
+2025-12-15 20:39:03 [SET] len = 4
+2025-12-15 20:39:03 [SET] len = 5
+2025-12-15 20:39:03 [SET] char = 'o'
+2025-12-15 20:39:03 [SET] char = 'l'
+2025-12-15 20:39:03 [SET] char = 'l'
+2025-12-15 20:39:03 [SET] char = 'e'
+2025-12-15 20:39:03 [SET] char = 'h'
+2025-12-15 20:39:03 [SET] reversed = 'olleh'
+2025-12-15 20:39:03 [PRINT] Reversed of 'hello' = olleh
